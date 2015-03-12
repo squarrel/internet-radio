@@ -1,0 +1,1 @@
+This is a basic internet radio app for Android. It uses the android service, via Kivy. Currently when the screen shuts down, the radio play stops. It's still a little buggy and unfinished, but worth taking a look, it shows how to communicate with the service using Kivy.

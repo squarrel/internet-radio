@@ -1,0 +1,167 @@
+#:kivy 1.8.0
+
+
+
+<Menu>:
+	
+	do_default_tab: False
+	tab_pos: 'bottom_mid'
+	tab_width: self.width / 4
+	tab_height: self.height / 10
+	background_image: 'images/novi-beograd.jpg'
+	
+	TabbedPanelHeader:
+        content: prvi.__self__
+        id: tph1
+        background_normal: 'images/menu-item-2.png' 
+        background_down: 'images/menu-item.png' 
+        
+        Image:
+			#id: img
+            pos: tph1.pos
+            size: tph1.size
+			source: 'images/radio.png' if tph1.state == 'normal' else 'images/radio.png'
+			keep_ratio: True   
+			allow_stretch: True         
+			
+	TabbedPanelHeader:
+		content: drugi.__self__
+		id: tph2
+		background_normal: 'images/menu-item-2.png' 
+        background_down: 'images/menu-item.png' 
+        Image:
+            pos: tph2.pos
+            size: tph2.size
+			source: 'images/sms.png' if tph2.state == 'normal' else 'images/sms.png'
+			keep_ratio: True   
+			allow_stretch: True   
+			
+	TabbedPanelHeader:
+        content: treci.__self__
+        id: tph3
+        background_normal: 'images/menu-item-2.png' 
+        background_down: 'images/menu-item.png' 
+        Image:
+            pos: tph3.pos
+            size: tph3.size
+			source: 'images/internet.png' if tph3.state == 'normal' else 'images/internet.png'
+			keep_ratio: True   
+			allow_stretch: True         
+			
+	TabbedPanelHeader:
+		content: cetvrti.__self__
+		id: tph4
+		background_normal: 'images/menu-item-2.png' 
+        background_down: 'images/menu-item.png' 
+        Image:
+            pos: tph4.pos
+            size: tph4.size
+			source: 'images/phone.png' if tph4.state == 'normal' else 'images/phone.png'
+			keep_ratio: True   
+			allow_stretch: True   
+		
+					#-------------------Naslovna
+
+	FloatLayout:
+		size: self.size
+		pos: self.pos
+		id: prvi
+			
+		Image:
+			source: 'images/header.png'
+			size_hint: prvi.width, .1
+			pos_hint: {'x':.0,'y':.9}
+			
+		Image:
+			source: 'images/logo.png'
+			keep_ratio: True
+			allow_stretch: True
+			size_hint: .3, .3
+			pos_hint: {'center_x':.5, 'center_y':.8}
+			
+		ImageButton:
+			source: 'images/play-active.png' if self.state == 'down' else root.boja_play
+			keep_ratio: True
+			allow_stretch: True
+			size_hint: .2, .15
+			pos_hint: {'center_x':.5, 'center_y':.2}
+			on_press: app.play_radio()
+			
+		ImageButton:
+			source: 'images/stop-down.png' if self.state == 'down' else 'images/stop.png'
+			keep_ratio: True
+			allow_stretch: True
+			size_hint: .17, .1
+			pos_hint: {'center_x':.23, 'center_y':.12}
+			on_press: app.stop_radio()
+				
+		#Button:
+			#text: "Снимај"
+			#size_hint: .2, .1
+			#pos_hint: {'center_x':.1, 'center_y':.4}
+			#on_press: root.snimaj()
+		
+		Button:
+			text: "Излаз"
+			size_hint: .2, .1
+			pos_hint: {'x':.8, 'y':.9}
+			on_press: app.izlaz()
+			on_release: app.stop()
+			
+		Label:
+			text: root.pokretni_tekst
+			size_hint: .2, .1
+			pos_hint: {'x':root.pos_x, 'center_y': .5}
+			font_size: 20
+			
+						#------------------------
+			
+	FloatLayout:
+		size: self.size
+		pos: self.pos
+		id: drugi
+	
+		Label:
+			text: 'Шаљи СМС'
+			pos_hint: {'center_x':.5,'y':.6}
+			size_hint: .3,.2
+			font_size: 20
+				
+		Label:
+			text: 'Пошаљите СМС на телефон:'
+			pos_hint: {'center_x':.5,'y':.3}
+			size_hint: .3,.2
+			font_size: 20
+				
+	FloatLayout:
+		size: self.size
+		pos: self.pos
+		id: treci
+		
+		Label:
+			text: 'Посетите наше интернет странице'
+			pos_hint: {'center_x':.5,'y':.3}
+			size_hint: .3,.2
+			font_size: 20
+		Label:
+			text: 'www.bumbumradio.rs'
+			pos_hint: {'center_x':.5,'y':.6}
+			size_hint: .3,.2
+			font_size: 20
+				
+	FloatLayout:
+		size: self.size
+		pos: self.pos
+		id: cetvrti
+	
+		Label:
+			text: 'Позовите нас'
+			size_hint: .3,.2
+			pos_hint: {'center_x':.5,'y':.6}
+			font_size: 20
+			
+		Label:
+			text: 'Позовите нас на бројеве телефона:'
+			pos_hint: {'center_x':.5,'y':.3}	
+			size_hint: .3,.2
+			font_size: 20
